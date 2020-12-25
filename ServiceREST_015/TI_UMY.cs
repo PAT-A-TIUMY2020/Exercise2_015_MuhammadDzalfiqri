@@ -70,6 +70,32 @@ namespace ServiceREST_015
             return mahas;
         }
 
+        public string UpdateMahasiswa(Mahasiswa mhs)
+        {
+            string msg = "GAGAL";
+
+            SqlConnection connection = new SqlConnection(dbstring);
+            string query = String.Format("update dbo.Mahasiswa set Nama = '" + mhs.nama + "', Prodi = '" + mhs.prodi + "', Angkatan= '" + mhs.angkatan + "' where NIM = '" + mhs.nim + "'");
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                Console.WriteLine(query);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                msg = "SUKSES";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(query);
+                msg = "GAGAL";
+            }
+
+            return msg;
+        }
+
         public Mahasiswa GetMahasiswaByNIM(string nim)
         {
             Mahasiswa mhs = new Mahasiswa();

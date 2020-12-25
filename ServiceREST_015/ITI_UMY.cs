@@ -24,6 +24,10 @@ namespace ServiceREST_015
         [WebInvoke(Method = "POST", UriTemplate = "Mahasiswa", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         string CreateMahasiswa(Mahasiswa mhs);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "UpdateMahasiswa", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        string UpdateMahasiswa(Mahasiswa mhs);
+
     }
 
     [DataContract]
