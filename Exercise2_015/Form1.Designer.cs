@@ -163,6 +163,7 @@
             this.btHapus.TabIndex = 2;
             this.btHapus.Text = "Delete";
             this.btHapus.UseVisualStyleBackColor = true;
+            this.btHapus.Click += new System.EventHandler(this.btHapus_Click);
             // 
             // btUpdate
             // 

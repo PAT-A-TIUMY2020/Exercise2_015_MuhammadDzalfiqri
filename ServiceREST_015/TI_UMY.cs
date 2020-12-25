@@ -96,6 +96,32 @@ namespace ServiceREST_015
             return msg;
         }
 
+        public string DeleteMahasiswa(string nim)
+        {
+            string msg = "GAGAL";
+
+            SqlConnection connection = new SqlConnection(dbstring);
+            string query = String.Format("delete from dbo.Mahasiswa where NIM = '{0}'", nim);
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                Console.WriteLine(query);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                msg = "SUKSES";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(query);
+                msg = "GAGAL";
+            }
+
+            return msg;
+        }
+
         public Mahasiswa GetMahasiswaByNIM(string nim)
         {
             Mahasiswa mhs = new Mahasiswa();

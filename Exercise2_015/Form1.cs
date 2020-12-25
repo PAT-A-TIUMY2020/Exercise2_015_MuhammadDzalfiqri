@@ -141,6 +141,21 @@ namespace Exercise2_015
             tampilData();
             totalMhs();
         }
+
+        private void btHapus_Click(object sender, EventArgs e)
+        {
+            mhs.nim = tbNIM.Text;
+
+            var data = JsonConvert.SerializeObject(mhs);
+            var deletedata = new WebClient();
+            deletedata.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+            string response = deletedata.UploadString(baseUrl + "DeleteMahasiswa/" + tbNIM.Text, data);
+
+            lblStatus.Text = response;
+            responseMsg();
+            tampilData();
+            totalMhs();
+        }
     }
 
     
